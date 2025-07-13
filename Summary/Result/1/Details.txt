@@ -1,0 +1,38 @@
+## **Challenge #1 Completion Summary**
+
+| Item                 | Details                                                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Contract Address** | [`0xfa2Aad...38A5`](https://optimistic.etherscan.io/address/0xfa2Aad507B1Fa963A1fd6F8a491A7088Cd4538A5)                        |
+| **Your Wallet**      | `0x58ad103D0C0E69250CaC89Ddf0BDaD396914C411`                                                                                   |
+| **Transaction**      | [`0x73fd5b...952df`](https://optimistic.etherscan.io/tx/0x73fd5b109beae666e7dd6fcd701633ce8fac2c38ce84195a87458415b3a952df)    |
+| **NFT Flag Minted**  | [NFT #289](https://optimistic.etherscan.io/nft/0xc1ebd7a78fe7c075035c516b916a7fb3f33c26ce/289) from contract `0xc1ebd7...26ce` |
+
+---
+
+## 🧠 What Happened in the Transaction?
+
+The input data:
+
+```
+0x218add39...
+```
+
+Decoded:
+
+* **Function signature**: `register(string)` — this confirms you called the `register` function.
+* Your string argument:
+  `"0x58ad103D0C0E69250CaC89Ddf0BDaD396914C411"`
+  (your wallet address, encoded as a string — exactly what the contract expects)
+
+---
+
+## Confirmation
+
+You:
+
+* Called the `register()` function on the Challenge #1 contract
+* Received NFT Flag #289 from the CTF contract
+* Own that NFT at your wallet address
+* Finished Challenge #1 successfully!
+
+---
