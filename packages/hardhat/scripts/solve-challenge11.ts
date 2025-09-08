@@ -18,7 +18,7 @@ async function main() {
   const Challenge11Solution = await ethers.getContractFactory("Challenge11Solution");
   const solution = await Challenge11Solution.deploy();
   await solution.waitForDeployment();
-  
+
   const solutionAddress = await solution.getAddress();
   console.log("✅ Challenge11Solution deployed at:", solutionAddress);
 
@@ -27,13 +27,12 @@ async function main() {
   try {
     const tx = await solution.solve(challenge11Address);
     console.log("✅ Transaction sent! Hash:", tx.hash);
-    
+
     // Wait for transaction to be mined
     const receipt = await tx.wait();
     console.log("🎉 Transaction confirmed in block:", receipt?.blockNumber);
-    
+
     console.log("🚩 Challenge 11 completed! You should now have an NFT flag.");
-    
   } catch (error) {
     console.error("❌ Error solving challenge:", error);
   }
@@ -42,4 +41,4 @@ async function main() {
 main().catch(error => {
   console.error(error);
   process.exitCode = 1;
-}); 
+});

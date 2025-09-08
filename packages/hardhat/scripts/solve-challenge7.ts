@@ -13,9 +13,7 @@ async function main() {
   const challenge7Address = "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6";
   console.log("📋 Challenge7 contract address:", challenge7Address);
 
-  const challenge7Abi = [
-    "function mintFlag() public"
-  ];
+  const challenge7Abi = ["function mintFlag() public"];
   const challenge7 = new ethers.Contract(challenge7Address, challenge7Abi, deployer);
 
   try {
@@ -24,7 +22,7 @@ async function main() {
     const claimOwnershipData = iface.encodeFunctionData("claimOwnership");
     const claimTx = await deployer.sendTransaction({
       to: challenge7Address,
-      data: claimOwnershipData
+      data: claimOwnershipData,
     });
     await claimTx.wait();
     console.log("✅ Ownership claimed!");
@@ -34,7 +32,6 @@ async function main() {
     const mintTx = await challenge7.mintFlag();
     await mintTx.wait();
     console.log("🚩 Challenge 7 completed! You should now have an NFT flag.");
-
   } catch (error) {
     console.error("❌ Error solving challenge:", error);
   }
@@ -43,4 +40,4 @@ async function main() {
 main().catch(error => {
   console.error(error);
   process.exitCode = 1;
-}); 
+});

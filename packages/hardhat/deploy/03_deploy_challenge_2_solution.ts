@@ -22,4 +22,4 @@ const deployChallenge2Solution: DeployFunction = async function (hre) {
 };
 
 export default deployChallenge2Solution;
-deployChallenge2Solution.tags = ["solution2"]; 
+deployChallenge2Solution.tags = ["solution2"];

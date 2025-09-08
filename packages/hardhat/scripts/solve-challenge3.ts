@@ -18,7 +18,7 @@ async function main() {
   const Challenge3Solution = await ethers.getContractFactory("Challenge3Solution");
   const solution = await Challenge3Solution.deploy(challenge3Address);
   await solution.waitForDeployment();
-  
+
   const solutionAddress = await solution.getAddress();
   console.log("✅ Challenge3Solution deployed at:", solutionAddress);
   console.log("🚩 Challenge 3 completed! You should now have an NFT flag.");
@@ -27,4 +27,4 @@ async function main() {
 main().catch(error => {
   console.error(error);
   process.exitCode = 1;
-}); 
+});

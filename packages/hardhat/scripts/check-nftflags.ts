@@ -17,7 +17,7 @@ async function main() {
     "function allowedMinters(address) public view returns (bool)",
     "function enabled() public view returns (bool)",
     "function hasMinted(address, uint256) public view returns (bool)",
-    "function owner() public view returns (address)"
+    "function owner() public view returns (address)",
   ];
   const nftFlags = new ethers.Contract(nftFlagsAddress, nftFlagsAbi, deployer);
 
@@ -44,7 +44,6 @@ async function main() {
     // Check if we've minted Challenge 2
     const hasMinted2 = await nftFlags.hasMinted(deployer.address, 2);
     console.log("🚩 Has minted Challenge 2:", hasMinted2);
-
   } catch (error) {
     console.error("❌ Error checking NFTFlags:", error);
   }
@@ -53,4 +52,4 @@ async function main() {
 main().catch(error => {
   console.error(error);
   process.exitCode = 1;
-}); 
+});

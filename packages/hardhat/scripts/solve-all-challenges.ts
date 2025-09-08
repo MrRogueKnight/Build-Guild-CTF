@@ -23,7 +23,7 @@ async function main() {
     challenge9: "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
     challenge10: "0x0000000000000000000000000000000000000000", // No contract, check NFTFlags
     challenge11: "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
-    challenge12: "0x9A676e781A523b5d0C0e43731313A708CB607508"
+    challenge12: "0x9A676e781A523b5d0C0e43731313A708CB607508",
   };
 
   // Challenge 1: Simple registration
@@ -31,7 +31,7 @@ async function main() {
   try {
     const challenge1Abi = ["function registerMe(string memory _name) public"];
     const challenge1 = new ethers.Contract(challengeAddresses.challenge1, challenge1Abi, deployer);
-    
+
     const currentName = await challenge1.builderNames(deployer.address);
     if (currentName === "") {
       const tx = await challenge1.registerMe("CTF Player");
@@ -49,12 +49,12 @@ async function main() {
   try {
     const challenge2Abi = ["function justCallMe() public"];
     const challenge2 = new ethers.Contract(challengeAddresses.challenge2, challenge2Abi, deployer);
-    
+
     // Deploy solution contract
     const Challenge2Solution = await ethers.getContractFactory("Challenge2Solution");
     const solution2 = await Challenge2Solution.deploy(challengeAddresses.challenge2);
     await solution2.waitForDeployment();
-    
+
     const tx = await solution2.solve();
     await tx.wait();
     console.log("✅ Challenge 2 completed!");
@@ -67,7 +67,7 @@ async function main() {
   try {
     const challenge3Abi = ["function mintFlag() public"];
     const challenge3 = new ethers.Contract(challengeAddresses.challenge3, challenge3Abi, deployer);
-    
+
     // Deploy a contract that calls mintFlag but has no code (constructor only)
     const Challenge3Solution = await ethers.getContractFactory(`
       contract Challenge3Solution {
@@ -77,7 +77,7 @@ async function main() {
         }
       }
     `);
-    
+
     const solution3 = await Challenge3Solution.deploy(challengeAddresses.challenge3);
     await solution3.waitForDeployment();
     console.log("✅ Challenge 3 completed!");
@@ -90,16 +90,13 @@ async function main() {
   try {
     const challenge4Abi = ["function mintFlag(address _minter, bytes memory signature) public"];
     const challenge4 = new ethers.Contract(challengeAddresses.challenge4, challenge4Abi, deployer);
-    
+
     // Create a message to sign
-    const message = ethers.solidityPackedKeccak256(
-      ["address", "uint256"],
-      [deployer.address, 4]
-    );
-    
+    const message = ethers.solidityPackedKeccak256(["address", "uint256"], [deployer.address, 4]);
+
     // Sign the message
     const signature = await deployer.signMessage(ethers.getBytes(message));
-    
+
     const tx = await challenge4.mintFlag(deployer.address, signature);
     await tx.wait();
     console.log("✅ Challenge 4 completed!");
@@ -113,18 +110,18 @@ async function main() {
     const challenge5Abi = [
       "function resetPoints() public",
       "function claimPoints() public",
-      "function mintFlag() public"
+      "function mintFlag() public",
     ];
     const challenge5 = new ethers.Contract(challengeAddresses.challenge5, challenge5Abi, deployer);
-    
+
     // Reset points first
     const resetTx = await challenge5.resetPoints();
     await resetTx.wait();
-    
+
     // Claim points
     const claimTx = await challenge5.claimPoints();
     await claimTx.wait();
-    
+
     // Mint flag
     const mintTx = await challenge5.mintFlag();
     await mintTx.wait();
@@ -138,11 +135,11 @@ async function main() {
   try {
     const challenge6Abi = ["function mintFlag(uint256 code) public"];
     const challenge6 = new ethers.Contract(challengeAddresses.challenge6, challenge6Abi, deployer);
-    
+
     // The code should be the contract's bytecode length
     const code = await ethers.provider.getCode(challengeAddresses.challenge6);
     const codeLength = ethers.dataLength(code);
-    
+
     const tx = await challenge6.mintFlag(codeLength);
     await tx.wait();
     console.log("✅ Challenge 6 completed!");
@@ -153,16 +150,13 @@ async function main() {
   // Challenge 7: Ownership claim
   console.log("\n🚩 Challenge 7: Ownership Claim");
   try {
-    const challenge7Abi = [
-      "function claimOwnership() public",
-      "function mintFlag() public"
-    ];
+    const challenge7Abi = ["function claimOwnership() public", "function mintFlag() public"];
     const challenge7 = new ethers.Contract(challengeAddresses.challenge7, challenge7Abi, deployer);
-    
+
     // Claim ownership
     const claimTx = await challenge7.claimOwnership();
     await claimTx.wait();
-    
+
     // Mint flag
     const mintTx = await challenge7.mintFlag();
     await mintTx.wait();
@@ -177,7 +171,7 @@ async function main() {
     // Challenge 8 is deployed with custom bytecode, we need to call it
     const challenge8Abi = ["function mintFlag() public"];
     const challenge8 = new ethers.Contract(challengeAddresses.challenge8, challenge8Abi, deployer);
-    
+
     const tx = await challenge8.mintFlag();
     await tx.wait();
     console.log("✅ Challenge 8 completed!");
@@ -190,10 +184,10 @@ async function main() {
   try {
     const challenge9Abi = ["function mintFlag(bytes32 _password) public"];
     const challenge9 = new ethers.Contract(challengeAddresses.challenge9, challenge9Abi, deployer);
-    
+
     // Get the password from the contract's constructor
     const password = await ethers.provider.getStorage(challengeAddresses.challenge9, 0);
-    
+
     const tx = await challenge9.mintFlag(password);
     await tx.wait();
     console.log("✅ Challenge 9 completed!");
@@ -206,7 +200,7 @@ async function main() {
   try {
     const nftFlagsAbi = ["function mintFlag() public"];
     const nftFlags = new ethers.Contract("0x5FbDB2315678afecb367f032d93F642f64180aa3", nftFlagsAbi, deployer);
-    
+
     const tx = await nftFlags.mintFlag();
     await tx.wait();
     console.log("✅ Challenge 10 completed!");
@@ -219,7 +213,7 @@ async function main() {
   try {
     const challenge11Abi = ["function mintFlag() public"];
     const challenge11 = new ethers.Contract(challengeAddresses.challenge11, challenge11Abi, deployer);
-    
+
     const tx = await challenge11.mintFlag();
     await tx.wait();
     console.log("✅ Challenge 11 completed!");
@@ -230,22 +224,19 @@ async function main() {
   // Challenge 12: RLP decoding
   console.log("\n🚩 Challenge 12: RLP Decoding");
   try {
-    const challenge12Abi = [
-      "function preMintFlag() public",
-      "function mintFlag(bytes memory rlpBytes) public"
-    ];
+    const challenge12Abi = ["function preMintFlag() public", "function mintFlag(bytes memory rlpBytes) public"];
     const challenge12 = new ethers.Contract(challengeAddresses.challenge12, challenge12Abi, deployer);
-    
+
     // First call preMintFlag
     const preTx = await challenge12.preMintFlag();
     await preTx.wait();
-    
+
     // Get the block number
     const blockNumber = await ethers.provider.getBlockNumber();
-    
+
     // Create RLP encoded block number
     const rlpBytes = ethers.toBeHex(blockNumber);
-    
+
     const tx = await challenge12.mintFlag(rlpBytes);
     await tx.wait();
     console.log("✅ Challenge 12 completed!");
@@ -259,4 +250,4 @@ async function main() {
 main().catch(error => {
   console.error(error);
   process.exitCode = 1;
-}); 
+});
