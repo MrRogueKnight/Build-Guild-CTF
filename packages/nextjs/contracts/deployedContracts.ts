@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  10: {
+  31337: {
     Challenge1: {
-      address: "0xfa2Aad507B1Fa963A1fd6F8a491A7088Cd4538A5",
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
       abi: [
         {
           inputs: [
@@ -88,7 +88,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge11: {
-      address: "0x67392ea0A56075239988B8E1E96663DAC167eF54",
+      address: "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
       abi: [
         {
           inputs: [
@@ -125,7 +125,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge12: {
-      address: "0x8c7A3c2c44aB16f693d1731b10C271C7d2967769",
+      address: "0x9A676e781A523b5d0C0e43731313A708CB607508",
       abi: [
         {
           inputs: [
@@ -226,7 +226,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge2: {
-      address: "0x0b997E0a306c47EEc755Df75fad7F41977C5582d",
+      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
       abi: [
         {
           inputs: [
@@ -263,7 +263,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge3: {
-      address: "0x03bF70f50fcF9420f27e31B47805bbd8f2f52571",
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
       abi: [
         {
           inputs: [
@@ -300,7 +300,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge4: {
-      address: "0x9c4A48Dd70a3219877a252E9a0d45Fc1Db808a1D",
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
       abi: [
         {
           inputs: [
@@ -524,7 +524,7 @@ const deployedContracts = {
       },
     },
     Challenge5: {
-      address: "0xB76AdFe9a791367A8fCBC2FDa44cB1a2c39D8F59",
+      address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
       abi: [
         {
           inputs: [
@@ -607,7 +607,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge6: {
-      address: "0x75961D2da1DEeBaEC24cD0E180187E6D55F55840",
+      address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
       abi: [
         {
           inputs: [
@@ -663,7 +663,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge7: {
-      address: "0xC962D4f4E772415475AA46Eed06cb1F2D4010c0A",
+      address: "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
       abi: [
         {
           inputs: [
@@ -727,7 +727,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge7Delegate: {
-      address: "0x0189C48307594A4A542E4851789e9585198d7420",
+      address: "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
       abi: [
         {
           inputs: [
@@ -777,12 +777,12 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Challenge8: {
-      address: "0x663145aA2918282A4F96af66320A5046C7009573",
+      address: "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
       abi: [],
       inheritedFunctions: {},
     },
     Challenge9: {
-      address: "0x1Fd913F2250ae5A4d9F8881ADf3153C6e5E2cBb1",
+      address: "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0",
       abi: [
         {
           inputs: [
@@ -830,7 +830,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     NFTFlags: {
-      address: "0xc1Ebd7a78FE7c075035c516B916A7FB3f33c26cE",
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       abi: [
         {
           inputs: [
@@ -1640,7 +1640,8 @@ const deployedContracts = {
         symbol: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
         tokenURI: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
         transferFrom: "@openzeppelin/contracts/token/ERC721/ERC721.sol",
-        onERC721Received: "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+        onERC721Received:
+          "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
         owner: "@openzeppelin/contracts/access/Ownable.sol",
         renounceOwnership: "@openzeppelin/contracts/access/Ownable.sol",
         transferOwnership: "@openzeppelin/contracts/access/Ownable.sol",

@@ -12,7 +12,7 @@ export type ScaffoldConfig = {
 const scaffoldConfig = {
   // The networks on which your DApp is live
   // TODO: Change to OP when live
-  targetNetworks: [chains.optimism],
+  targetNetworks: [chains.hardhat],
 
   // startBlock for indexer
   // TODO: Change to the right block when live

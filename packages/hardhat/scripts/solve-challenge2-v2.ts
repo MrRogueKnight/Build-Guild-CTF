@@ -1,0 +1,45 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+import { ethers } from "hardhat";
+
+async function main() {
+  console.log("🎯 Solving Challenge 2: Contract Call (V2)");
+
+  // Get the deployer account
+  const [deployer] = await ethers.getSigners();
+  console.log("👤 Using address:", deployer.address);
+
+  // Get the Challenge2 contract address
+  const challenge2Address = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
+  console.log("📋 Challenge2 contract address:", challenge2Address);
+
+  // Deploy the solution contract
+  console.log("🚀 Deploying Challenge2SolutionV2 contract...");
+  const Challenge2SolutionV2 = await ethers.getContractFactory("Challenge2SolutionV2");
+  const solution = await Challenge2SolutionV2.deploy();
+  await solution.waitForDeployment();
+  
+  const solutionAddress = await solution.getAddress();
+  console.log("✅ Challenge2SolutionV2 deployed at:", solutionAddress);
+
+  // Call the solve function
+  console.log("🔧 Calling solve() function...");
+  try {
+    const tx = await solution.solve(challenge2Address);
+    console.log("✅ Transaction sent! Hash:", tx.hash);
+    
+    // Wait for transaction to be mined
+    const receipt = await tx.wait();
+    console.log("🎉 Transaction confirmed in block:", receipt?.blockNumber);
+    
+    console.log("🚩 Challenge 2 completed! You should now have an NFT flag.");
+    
+  } catch (error) {
+    console.error("❌ Error solving challenge:", error);
+  }
+}
+
+main().catch(error => {
+  console.error(error);
+  process.exitCode = 1;
+}); 
